@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: calculadora-impostos-backend
+    env: node
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+    repo: https://github.com/seu-usuario/calculadora-impostos
+    branch: main
+    region: oregon
+    instanceSize: free
+    healthCheck:
+      path: /aliquotas
+      interval: 30000
+      timeout: 5000
+      retries: 3
+    disk:
+      sizeGB: 1
