@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(logRequest);
 
 // Conectar ao banco de dados
-const dbPath = path.join(process.env.TMPDIR || '/tmp', 'aliquotas.db');
+const path = require('path');
+const dbPath = path.join(__dirname, 'database.sqlite');
 const db = new sqlite3.Database(dbPath);
 
 // Criar tabelas se não existirem
